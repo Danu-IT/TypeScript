@@ -8,13 +8,13 @@ class Book {
         this.pageAmount = pageAmount;
     }
 }
-const books = [
+const books: Book[] = [
     new Book("Властелин Колец", "Фентази", 500),
     new Book("Гарри Поттер", "Фентази", 300),
     new Book("Игра Пристолов", "Фентази", 500),
 ];
 
-const findSuitableBook = (genre: string, pagesLimit: number, multiplayer: boolean = true): Book => {
+const findSuitableBook = (genre: string, pagesLimit: number, multiplayer: boolean = true): Book | Book[] => {
     const findAlgoritm = (book: Book) => {
         return book.genre === genre && book.pageAmount <= pagesLimit;
     };
@@ -24,4 +24,4 @@ const findSuitableBook = (genre: string, pagesLimit: number, multiplayer: boolea
 };
 
 
-console.log(findSuitableBook("Фентази", 500));
+console.log(findSuitableBook("Фентази", 500, true));

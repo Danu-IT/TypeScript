@@ -20,4 +20,4 @@ const findSuitableBook = (genre, pagesLimit, multiplayer = true) => {
     else
         return books.find(findAlgoritm);
 };
-console.log(findSuitableBook("Фентази", 500));
+console.log(findSuitableBook("Фентази", 500, true));
