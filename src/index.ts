@@ -1,27 +1,22 @@
-class Book {
-    name: string;
-    genre: string;
-    pageAmount: number;
-    constructor(name: string, genre: string, pageAmount: number) {
-        this.name = name;
-        this.genre = genre;
-        this.pageAmount = pageAmount;
+import { renderSearchFormBlock } from "./search-form.js";
+import { renderSearchStubBlock } from "./search-results.js";
+import { renderUserBlock } from "./user.js";
+import { renderToast } from "./lib.js";
+
+window.addEventListener("DOMContentLoaded", () => {
+  renderUserBlock("Wade Warren", "img/avatar.png", 0);
+  renderSearchFormBlock();
+  renderSearchStubBlock();
+  renderToast(
+    {
+      text: "Это пример уведомления. Используйте его при необходимости",
+      type: "success",
+    },
+    {
+      name: "Понял",
+      handler: () => {
+        console.log("Уведомление закрыто");
+      },
     }
-}
-const books: Book[] = [
-    new Book("Властелин Колец", "Фентази", 500),
-    new Book("Гарри Поттер", "Фентази", 300),
-    new Book("Игра Пристолов", "Фентази", 500),
-];
-
-const findSuitableBook = (genre: string, pagesLimit: number, multiplayer: boolean = true): Book | Book[] => {
-    const findAlgoritm = (book: Book) => {
-        return book.genre === genre && book.pageAmount <= pagesLimit;
-    };
-    if (multiplayer) {
-        return books.filter(findAlgoritm);
-    } else return books.find(findAlgoritm);
-};
-
-
-console.log(findSuitableBook("Фентази", 500, true));
+  );
+});
